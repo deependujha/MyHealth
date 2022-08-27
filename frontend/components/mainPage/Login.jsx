@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
+import { useRouter } from "next/router";
 
 const Login = () => {
   const [clicked, setClicked] = useState("Hospital");
+  const router = useRouter();
+
   return (
     <div className="d-grid gap-4">
       <div className="my-3">
@@ -60,6 +63,7 @@ const Login = () => {
         size="lg"
         onClick={() => {
           console.log(`${clicked} - org`);
+          router.push("/Organizations/");
         }}
       >
         Enter as an Organization
