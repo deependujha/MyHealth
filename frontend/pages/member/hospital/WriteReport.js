@@ -1,12 +1,31 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
+import { useRouter } from "next/router";
 
-const WriteReport = ({ usrAddr, newUsrAddr, setNewUsrAddr }) => {
+const WriteReport = ({ usrAddr, setNewUsrAddr, newUsrAddr, myContract }) => {
+  const router = useRouter();
   const [what, setWhat] = useState("");
   const [med, setMed] = useState("");
   const [tag, setTag] = useState("");
   const [remarks, setRemarks] = useState("");
 
+  const writeTheData = async () => {
+    myContract
+      .enterData(newUsrAddr, what, med, tag, remarks)
+      .then((val) => {
+        alert("Data entered successfully");
+        setWhat("");
+        setMed("");
+        setTag("");
+        setRemarks("");
+        setNewUsrAddr("");
+
+        router.replace("/member/hospital");
+      })
+      .catch((err) => {
+        alert(err);
+      });
+  };
   return (
     <div>
       <div className={`customText text-center my-5`}>
@@ -96,9 +115,7 @@ const WriteReport = ({ usrAddr, newUsrAddr, setNewUsrAddr }) => {
                   className="mb-4"
                   size="lg"
                   onClick={() => {
-                    console.log(
-                      `Clicked on write health report. Usr: ${usrAddr}`
-                    );
+                    writeTheData();
                   }}
                 >
                   Write health report
