@@ -33,7 +33,11 @@ const Orgz = ({ clicked }) => {
             variant="primary"
             size="lg"
             onClick={() => {
-              console.log(`add/ban the member`);
+              if (memberAddr === "") {
+                alert("Member's address can't be empty.");
+                return;
+              }
+              console.log(`${clicked} the member: ${memberAddr}`);
             }}
           >
             {clicked} the member
