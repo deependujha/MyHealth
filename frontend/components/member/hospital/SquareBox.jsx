@@ -2,8 +2,25 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import { useRouter } from "next/router";
 
-const SquareBox = ({ newUsrAddr, setNewUsrAddr }) => {
+const SquareBox = ({
+  newUsrAddr,
+  setNewUsrAddr,
+  myContract,
+  setUsrHealthData,
+}) => {
   const router = useRouter();
+
+  const checkUsrData = async () => {
+    myContract
+      .viewData(newUsrAddr)
+      .then((val) => {
+        setUsrHealthData(val);
+        router.push("/member/hospital/ViewReport");
+      })
+      .catch((err) => {
+        alert(err);
+      });
+  };
   return (
     <div className="">
       <div className="d-flex justify-content-center">
@@ -42,6 +59,7 @@ const SquareBox = ({ newUsrAddr, setNewUsrAddr }) => {
                 console.log(
                   `Clicked on check health report. Usr: ${newUsrAddr}`
                 );
+                checkUsrData();
               }}
             >
               Check health report
