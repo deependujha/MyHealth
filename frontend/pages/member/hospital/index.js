@@ -1,7 +1,6 @@
 import React from "react";
-import Add_n_Join from "../../components/orgz/Add_n_BanMember";
-import Image_n_Box from "../../components/member/hospital/Image_n_Box";
-const hospital = () => {
+import Image_n_Box from "../../../components/member/hospital/Image_n_Box";
+const hospital = ({usrAddr, setUsrAddr}) => {
   return (
     <div className="text-center my-5">
       <h4
@@ -12,7 +11,7 @@ const hospital = () => {
       </h4>
       <h4 className="mb-5"> You can check & write health data of a user.</h4>
       <div style={{}}>
-        <Image_n_Box />
+        <Image_n_Box usrAddr={usrAddr} setUsrAddr={setUsrAddr} />
       </div>
     </div>
   );

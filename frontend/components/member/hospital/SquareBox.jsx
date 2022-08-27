@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
+import { useRouter } from "next/router";
 
-const SquareBox = () => {
-  const [usrAddr, setUsrAddr] = useState("");
+const SquareBox = ({ usrAddr, setUsrAddr }) => {
+  const router = useRouter();
   return (
     <div className="">
       <div className="d-flex justify-content-center">
@@ -53,6 +54,7 @@ const SquareBox = () => {
                   return;
                 }
                 console.log(`Clicked on write health report. Usr: ${usrAddr}`);
+                router.push("/member/hospital/WriteReport");
               }}
             >
               Write health report

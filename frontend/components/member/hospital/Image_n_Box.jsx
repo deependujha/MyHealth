@@ -5,7 +5,7 @@ import Col from "react-bootstrap/Col";
 import Image from "next/image";
 import SquareBox from "./SquareBox";
 
-const Image_n_Box = ({}) => {
+const Image_n_Box = ({usrAddr,setUsrAddr}) => {
   return (
     <div style={{ alignContent: "center" }}>
       <Container>
@@ -24,7 +24,7 @@ const Image_n_Box = ({}) => {
             </div>
           </Col>
           <Col>
-            <SquareBox />
+            <SquareBox usrAddr={usrAddr} setUsrAddr={setUsrAddr} />
           </Col>
         </Row>
       </Container>
