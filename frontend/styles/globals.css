@@ -33,3 +33,17 @@ a {
   font-weight: 700;
   color: rgb(222, 46, 75);
 }
+
+.squareBox {
+  min-height: 100vh;
+  padding: 4rem 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.dancingText{
+  font-family: 'Dancing Script', cursive;
+}
