@@ -19,8 +19,17 @@ a {
   html {
     color-scheme: dark;
   }
+
   body {
     color: white;
     background: black;
   }
+}
+
+
+.customText {
+  font-family: 'Dancing Script', cursive;
+  font-size: 50px;
+  font-weight: 700;
+  color: rgb(222, 46, 75);
 }
