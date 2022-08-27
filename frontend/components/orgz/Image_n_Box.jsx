@@ -5,7 +5,7 @@ import Col from "react-bootstrap/Col";
 import Image from "next/image";
 import Orgz from "./Org";
 
-const Image_n_Box = ({ clicked }) => {
+const Image_n_Box = ({ clicked, myContract, newUsrAddr, setNewUsrAddr }) => {
   return (
     <div style={{ alignContent: "center" }}>
       <Container>
@@ -25,7 +25,12 @@ const Image_n_Box = ({ clicked }) => {
             </div>
           </Col>
           <Col className="my-auto">
-            <Orgz clicked={clicked} />
+            <Orgz
+              clicked={clicked}
+              myContract={myContract}
+              newUsrAddr={newUsrAddr}
+              setNewUsrAddr={setNewUsrAddr}
+            />
           </Col>
         </Row>
       </Container>

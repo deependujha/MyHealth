@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import { useRouter } from "next/router";
 
-const SquareBox = ({ usrAddr, setUsrAddr }) => {
+const SquareBox = ({ newUsrAddr, setNewUsrAddr }) => {
   const router = useRouter();
   return (
     <div className="">
@@ -20,9 +20,9 @@ const SquareBox = ({ usrAddr, setUsrAddr }) => {
           <div className="input-group mt-1 mx-5" style={{ width: "400px" }}>
             <span className="input-group-text"> ⧫</span>
             <input
-              value={usrAddr}
+              value={newUsrAddr}
               onChange={(e) => {
-                setUsrAddr(e.target.value);
+                setNewUsrAddr(e.target.value);
               }}
               type="text"
               className="form-control"
@@ -35,11 +35,13 @@ const SquareBox = ({ usrAddr, setUsrAddr }) => {
               variant={"primary"}
               size="lg"
               onClick={() => {
-                if (usrAddr === "") {
+                if (newUsrAddr === "") {
                   alert("User's address can't be empty.");
                   return;
                 }
-                console.log(`Clicked on check health report. Usr: ${usrAddr}`);
+                console.log(
+                  `Clicked on check health report. Usr: ${newUsrAddr}`
+                );
               }}
             >
               Check health report
@@ -49,11 +51,13 @@ const SquareBox = ({ usrAddr, setUsrAddr }) => {
               className="mb-4"
               size="lg"
               onClick={() => {
-                if (usrAddr === "") {
+                if (newUsrAddr === "") {
                   alert("User's address can't be empty.");
                   return;
                 }
-                console.log(`Clicked on write health report. Usr: ${usrAddr}`);
+                console.log(
+                  `Clicked on write health report. Usr: ${newUsrAddr}`
+                );
                 router.push("/member/hospital/WriteReport");
               }}
             >

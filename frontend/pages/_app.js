@@ -7,6 +7,7 @@ function MyApp({ Component, pageProps }) {
   const [usrAddr, setUsrAddr] = useState("");
   const [myContract, setMyContract] = useState("");
   const [myOrg, setMyOrg] = useState("Hospital");
+  const [newUsrAddr, setNewUsrAddr]=useState("");
 
   useEffect(() => {
     import("bootstrap/dist/js/bootstrap");
@@ -33,6 +34,8 @@ function MyApp({ Component, pageProps }) {
         setMyContract={setMyContract}
         myOrg={myOrg}
         setMyOrg={setMyOrg}
+        newUsrAddr={newUsrAddr}
+        setNewUsrAddr={setNewUsrAddr}
       />
     </>
   );

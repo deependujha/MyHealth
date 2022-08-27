@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 
-const WriteReport = ({ usrAddr }) => {
+const WriteReport = ({ usrAddr, newUsrAddr, setNewUsrAddr }) => {
   const [what, setWhat] = useState("");
   const [med, setMed] = useState("");
   const [tag, setTag] = useState("");
@@ -29,7 +29,7 @@ const WriteReport = ({ usrAddr }) => {
                 <span className="input-group-text"> ⧫</span>
                 <input
                   disabled
-                  value={usrAddr}
+                  value={newUsrAddr}
                   onChange={(e) => {}}
                   type="text"
                   className="form-control"
@@ -96,10 +96,6 @@ const WriteReport = ({ usrAddr }) => {
                   className="mb-4"
                   size="lg"
                   onClick={() => {
-                    if (usrAddr === "") {
-                      alert("User's address can't be empty.");
-                      return;
-                    }
                     console.log(
                       `Clicked on write health report. Usr: ${usrAddr}`
                     );
