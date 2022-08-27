@@ -1,9 +1,33 @@
-import React from 'react'
+import React from "react";
+import Image_n_Box from "../../../components/member/hospital/Image_n_Box";
 
-const index = () => {
+const hospital = ({
+  usrAddr,
+  setUsrAddr,
+  newUsrAddr,
+  setNewUsrAddr,
+  myContract,
+  setUsrHealthData,
+}) => {
   return (
-    <div>Insurance Org-Member</div>
-  )
-}
+    <div className="text-center my-5">
+      <h4
+        className="text-primary dancingText mt-5 mb-2"
+        style={{ fontSize: "30px" }}
+      >
+        Welcome, Doctor!
+      </h4>
+      <h4 className="mb-5"> You can check & write health data of a user.</h4>
+      <div style={{}}>
+        <Image_n_Box
+          newUsrAddr={newUsrAddr}
+          setNewUsrAddr={setNewUsrAddr}
+          myContract={myContract}
+          setUsrHealthData={setUsrHealthData}
+        />
+      </div>
+    </div>
+  );
+};
 
-export default index
+export default hospital;
