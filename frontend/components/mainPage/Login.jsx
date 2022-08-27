@@ -12,7 +12,6 @@ const Login = ({
   const router = useRouter();
 
   const enterAsOrganization = async () => {
-    await connectWithMetaMask();
     if (myOrg === "Hospital") {
       myContract
         .hospitalOrg()
@@ -69,6 +68,62 @@ const Login = ({
     }
   };
 
+  const enterAsMember = async () => {
+    if (myOrg === "Hospital") {
+      myContract
+        .allowed("hospital", usrAddr)
+        .then((val) => {
+          if (val) {
+            router.push("/member/hospital");
+          } else {
+            alert("You are not the member of the organization.");
+          }
+        })
+        .catch((err) =>
+          console.log("Printing error msg at getText function: ", err.message)
+        );
+    } else if (myOrg === "Defence") {
+      myContract
+        .allowed("defence", usrAddr)
+        .then((val) => {
+          console.log(val);
+          if (val) {
+            router.push("/member/defence");
+          } else {
+            alert("You are not the member of the organization.");
+          }
+        })
+        .catch((err) =>
+          console.log("Printing error msg at getText function: ", err.message)
+        );
+    } else if (myOrg === "Insurance") {
+      myContract
+        .allowed("insurance", usrAddr)
+        .then((val) => {
+          if (val) {
+            router.push("/member/insurance");
+          } else {
+            alert("You are not the member of the organization.");
+          }
+        })
+        .catch((err) =>
+          console.log("Printing error msg at getText function: ", err.message)
+        );
+    } else {
+      myContract
+        .allowed("dataAnalyst", usrAddr)
+        .then((val) => {
+          if (val) {
+            router.push("/member/dataAnalyst");
+          } else {
+            alert("You are not the member of the organization.");
+          }
+        })
+        .catch((err) =>
+          console.log("Printing error msg at getText function: ", err.message)
+        );
+    }
+  };
   return (
     <div className="d-grid gap-4">
       <div className="my-3">
@@ -146,8 +201,7 @@ const Login = ({
         variant="primary"
         size="lg"
         onClick={() => {
-          console.log(`${clicked} - member`);
-          router.push("/member/hospital");
+          enterAsMember();
         }}
       >
         Enter as a Member
