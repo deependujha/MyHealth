@@ -73,6 +73,7 @@ const Login = () => {
         size="lg"
         onClick={() => {
           console.log(`${clicked} - member`);
+          router.push("/member/hospital");
         }}
       >
         Enter as a Member

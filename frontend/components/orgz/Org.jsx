@@ -16,18 +16,18 @@ const Orgz = ({ clicked }) => {
       >
         <div className="mt-5">Enter the address of member:</div>
 
-        <div className="input-group mt-1 mx-5" style={{ width: "400px" }}>
-          <span className="input-group-text"> ⧫</span>
-          <input
-            value={memberAddr}
-            onChange={(e) => {
-              setMemberAddr(e.target.value);
-            }}
-            type="text"
-            className="form-control"
-            aria-label="member's address"
-          />
-        </div>
+<div className="input-group mt-1 mx-5" style={{ width: "400px" }}>
+  <span className="input-group-text"> ⧫</span>
+  <input
+    value={memberAddr}
+    onChange={(e) => {
+      setMemberAddr(e.target.value);
+    }}
+    type="text"
+    className="form-control"
+    aria-label="member's address"
+  />
+</div>
         <div className="d-grid mx-5 my-5">
           <Button
             variant={clicked === "Add" ? "primary" : "danger"}
