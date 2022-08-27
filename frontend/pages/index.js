@@ -1,8 +1,16 @@
 import Main from "../components/mainPage/Main";
 import { ethers } from "ethers";
 import ABI from "/abi";
+import React, { useEffect } from "react";
 
-export default function Home({ setMyContract, myOrg, setMyOrg }) {
+export default function Home({
+  setMyContract,
+  myOrg,
+  setMyOrg,
+  myContract,
+  usrAddr,
+  setUsrAddr,
+}) {
   const connectWithMetaMask = async () => {
     // A Web3Provider wraps a standard Web3 provider, which is
     // what MetaMask injects as window.ethereum into each page
@@ -22,7 +30,7 @@ export default function Home({ setMyContract, myOrg, setMyOrg }) {
     // send ether and pay to change state within the blockchain.
     // For this, you need the account signer...
     let signer = provider.getSigner();
-    console.log("connected with metamask");
+    // console.log("connected with metamask");
 
     // creating an instance of the smart contract
     // it takes three parameters => {contract's address, abi, signer/provider}
@@ -34,8 +42,14 @@ export default function Home({ setMyContract, myOrg, setMyOrg }) {
       signer
     );
     setMyContract(contract);
-    console.log(contract.address);
+    // console.log(contract.address);
+    let usrAddress = await signer.getAddress();
+    setUsrAddr(usrAddress);
   };
+
+  useEffect(() => {
+    connectWithMetaMask();
+  }, []);
 
   return (
     <div className="">
@@ -47,6 +61,8 @@ export default function Home({ setMyContract, myOrg, setMyOrg }) {
           connectWithMetaMask={connectWithMetaMask}
           setMyOrg={setMyOrg}
           myOrg={myOrg}
+          myContract={myContract}
+          usrAddr={usrAddr}
         />
       </div>
     </div>

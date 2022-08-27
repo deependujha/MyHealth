@@ -5,7 +5,7 @@ import Col from "react-bootstrap/Col";
 import Image from "next/image";
 import Login from "./Login";
 
-const Main = ({connectWithMetaMask,myOrg, setMyOrg}) => {
+const Main = ({ connectWithMetaMask, myOrg, setMyOrg, myContract, usrAddr }) => {
   return (
     <div style={{ alignContent: "center" }}>
       <Container>
@@ -18,7 +18,13 @@ const Main = ({connectWithMetaMask,myOrg, setMyOrg}) => {
             </div>
           </Col>
           <Col md="4" className="my-auto">
-            <Login connectWithMetaMask={connectWithMetaMask} myOrg={myOrg} setMyOrg={setMyOrg} />
+            <Login
+              connectWithMetaMask={connectWithMetaMask}
+              myOrg={myOrg}
+              setMyOrg={setMyOrg}
+              myContract={myContract}
+              usrAddr={usrAddr}
+            />
           </Col>
         </Row>
       </Container>

@@ -2,8 +2,72 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import { useRouter } from "next/router";
 
-const Login = ({ connectWithMetaMask, myOrg, setMyOrg }) => {
+const Login = ({
+  connectWithMetaMask,
+  myOrg,
+  setMyOrg,
+  myContract,
+  usrAddr,
+}) => {
   const router = useRouter();
+
+  const enterAsOrganization = async () => {
+    await connectWithMetaMask();
+    if (myOrg === "Hospital") {
+      myContract
+        .hospitalOrg()
+        .then((val) => {
+          if (val === usrAddr) {
+            router.push("/Organizations");
+          } else {
+            alert("You are not the Hospital Organization head.");
+          }
+        })
+        .catch((err) =>
+          console.log("Printing error msg at getText function: ", err.message)
+        );
+    } else if (myOrg === "Defence") {
+      myContract
+        .defenceOrg()
+        .then((val) => {
+          console.log(val);
+          if (val === usrAddr) {
+            router.push("/Organizations");
+          } else {
+            alert("You are not the Defence Organization head.");
+          }
+        })
+        .catch((err) =>
+          console.log("Printing error msg at getText function: ", err.message)
+        );
+    } else if (myOrg === "Insurance") {
+      myContract
+        .insuranceOrg()
+        .then((val) => {
+          if (val === usrAddr) {
+            router.push("/Organizations");
+          } else {
+            alert("You are not the Insurance Organization head.");
+          }
+        })
+        .catch((err) =>
+          console.log("Printing error msg at getText function: ", err.message)
+        );
+    } else {
+      myContract
+        .dataAnalystOrg()
+        .then((val) => {
+          if (val === usrAddr) {
+            router.push("/Organizations");
+          } else {
+            alert("You are not the Data Analyst Organization head.");
+          }
+        })
+        .catch((err) =>
+          console.log("Printing error msg at getText function: ", err.message)
+        );
+    }
+  };
 
   return (
     <div className="d-grid gap-4">
@@ -47,27 +111,38 @@ const Login = ({ connectWithMetaMask, myOrg, setMyOrg }) => {
         </button>
         <button
           className={`btn btn-${
-            myOrg === "Data Analytics" ? "success" : "outline-dark"
+            myOrg === "Data Analysts" ? "success" : "outline-dark"
           } rounded-pill mx-1 my-1`}
           style={{ width: "175px" }}
           onClick={() => {
-            setMyOrg("Data Analytics");
+            setMyOrg("Data Analysts");
           }}
         >
           Data Analytics
         </button>
       </div>
       <Button
+        disabled={myContract !== "" ? true : false}
         variant="primary"
         size="lg"
         onClick={() => {
-          console.log(`${clicked} - org`);
-          router.push("/Organizations/");
+          connectWithMetaMask();
+        }}
+      >
+        Connect with MetaMask
+      </Button>
+      <Button
+        disabled={myContract === "" ? true : false}
+        variant="primary"
+        size="lg"
+        onClick={() => {
+          enterAsOrganization();
         }}
       >
         Enter as an Organization
       </Button>
       <Button
+        disabled={myContract === "" ? true : false}
         variant="primary"
         size="lg"
         onClick={() => {
