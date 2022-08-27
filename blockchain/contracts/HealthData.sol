@@ -26,15 +26,15 @@ contract MyHealth {
     //  - Insurance Organization
     //  - Data Analyst Organization
 
-    address hospitalOrg;
-    address defenceOrg;
-    address insuranceOrg;
-    address dataAnalystOrg;
+    address public hospitalOrg;
+    address public defenceOrg;
+    address public insuranceOrg;
+    address public dataAnalystOrg;
 
     // mapping of user's address with their health data
     mapping(address => dataStruct) healthData;
     // mapping of organization & address with permission, if they are allowed to view data or not
-    mapping(string => mapping(address => bool)) allowed;
+    mapping(string => mapping(address => bool)) public allowed;
 
     constructor(
         address hos,
