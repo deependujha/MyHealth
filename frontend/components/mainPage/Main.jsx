@@ -12,7 +12,7 @@ const Main = () => {
         <Row>
           <Col md="8">
             <div
-              style={{ width: "100%", height: "100vh", position: "relative" }}
+              style={{ width: "100%", height: "80vh", position: "relative" }}
             >
               <Image src="/Images/MainPage/mainImage.jpg" layout="fill" />
             </div>

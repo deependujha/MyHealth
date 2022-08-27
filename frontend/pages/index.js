@@ -6,8 +6,10 @@ import Main from "../components/mainPage/Main";
 
 export default function Home() {
   return (
-    <div className={styles.container}>
-      <Main />
+    <div className="">
+      <div className={`${styles.main}`}>
+        <Main />
+      </div>
     </div>
   );
 }
