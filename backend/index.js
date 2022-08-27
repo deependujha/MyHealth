@@ -30,6 +30,34 @@ app.get("/tagAbsent/:tag", async (req, res) => {
   }
 });
 
+app.post("/tag", async (req, res) => {
+  try {
+    const usr = await HealthData.findOne({ address: req.body.addr });
+    console.log(usr);
+    if (usr) {
+      let newData = usr.tags;
+      newData.push(req.body.tag);
+      const resData = await HealthData.findOneAndUpdate(
+        { address: req.body.addr },
+        { address: req.body.addr, tags: newData }
+      );
+      res.send("data updated");
+    } else {
+      let myTag = [];
+      myTag.push(req.body.tag);
+      const data = await HealthData({
+        address: req.body.addr,
+        tags: myTag,
+      });
+
+      await data.save();
+      res.send("data saved");
+    }
+  } catch (err) {
+    res.status(404).send(err);
+  }
+});
+
 app.listen(port, () => {
   console.log(`App started on http://localhost:${port}`);
 });
