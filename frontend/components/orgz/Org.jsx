@@ -30,7 +30,7 @@ const Orgz = ({ clicked }) => {
         </div>
         <div className="d-grid mx-5 my-5">
           <Button
-            variant="primary"
+            variant={clicked === "Add" ? "primary" : "danger"}
             size="lg"
             onClick={() => {
               if (memberAddr === "") {
