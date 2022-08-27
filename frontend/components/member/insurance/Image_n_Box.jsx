@@ -12,7 +12,7 @@ const Image_n_Box = ({
   setUsrHealthData,
 }) => {
   return (
-    <div style={{ alignContent: "center" }}>
+    <div style={{ alignContent: "center" }} className="my-5">
       <Container>
         <Row>
           <Col>
@@ -25,10 +25,13 @@ const Image_n_Box = ({
                 overflow: "hidden",
               }}
             >
-              <Image src="/Images/doctor/doctor.jpg" layout="fill" />
+              <Image src="/Images/insurance/insurance.jpg" layout="fill" />
             </div>
           </Col>
-          <Col className="row align-items-center">
+          <Col
+            className="row align-items-center"
+            style={{ alignContent: "center" }}
+          >
             <div className="row align-items-center">
               <SquareBox
                 newUsrAddr={newUsrAddr}

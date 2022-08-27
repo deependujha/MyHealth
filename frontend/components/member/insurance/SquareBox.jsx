@@ -15,7 +15,7 @@ const SquareBox = ({
       .viewData(newUsrAddr)
       .then((val) => {
         setUsrHealthData(val);
-        router.push("/member/defence/ViewReport");
+        router.push("/member/insurance/ViewReport");
       })
       .catch((err) => {
         alert(err);
@@ -27,7 +27,7 @@ const SquareBox = ({
         <div
           style={{
             border: "2px solid black",
-            height: "400px",
+            height: "300px",
             width: "500px",
             borderRadius: "20px",
           }}
@@ -63,24 +63,6 @@ const SquareBox = ({
               }}
             >
               Check health report
-            </Button>
-            <div className="my-3">
-              <div class="separator">
-                <span className="mx-3">or</span>
-              </div>
-            </div>
-            <Button
-              variant={"primary"}
-              className="my-4"
-              size="lg"
-              onClick={() => {
-                console.log(
-                  `Clicked on write health report. Usr: ${newUsrAddr}`
-                );
-                alert("complex query function will be made soon");
-              }}
-            >
-              Make a complex query on health data
             </Button>
           </div>
         </div>

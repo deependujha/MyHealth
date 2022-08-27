@@ -19,7 +19,7 @@ const Image_n_Box = ({
             <div
               style={{
                 width: "100%",
-                height: "150%",
+                height: "500px",
                 position: "relative",
                 borderRadius: "20px",
                 overflow: "hidden",
@@ -28,7 +28,7 @@ const Image_n_Box = ({
               <Image src="/Images/defence/defence.jpg" layout="fill" />
             </div>
           </Col>
-          <Col>
+          <Col className="row align-items-center">
             <SquareBox
               newUsrAddr={newUsrAddr}
               setNewUsrAddr={setNewUsrAddr}
