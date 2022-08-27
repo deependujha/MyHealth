@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import { useRouter } from "next/router";
 
-const Login = () => {
-  const [clicked, setClicked] = useState("Hospital");
+const Login = ({ connectWithMetaMask, myOrg, setMyOrg }) => {
   const router = useRouter();
 
   return (
@@ -14,22 +13,22 @@ const Login = () => {
         </strong>
         <button
           className={`btn btn-${
-            clicked == "Hospital" ? "success" : "outline-dark"
+            myOrg == "Hospital" ? "success" : "outline-dark"
           } rounded-pill mx-1 my-1`}
           style={{ width: "175px" }}
           onClick={() => {
-            setClicked("Hospital");
+            setMyOrg("Hospital");
           }}
         >
           Hospital
         </button>
         <button
           className={`btn btn-${
-            clicked === "Defence" ? "success" : "outline-dark"
+            myOrg === "Defence" ? "success" : "outline-dark"
           } rounded-pill mx-1 my-1`}
           style={{ width: "175px" }}
           onClick={() => {
-            setClicked("Defence");
+            setMyOrg("Defence");
           }}
         >
           Defence
@@ -37,22 +36,22 @@ const Login = () => {
 
         <button
           className={`btn btn-${
-            clicked == "Insurance" ? "success" : "outline-dark"
+            myOrg == "Insurance" ? "success" : "outline-dark"
           } rounded-pill mx-1 my-1`}
           style={{ width: "175px" }}
           onClick={() => {
-            setClicked("Insurance");
+            setMyOrg("Insurance");
           }}
         >
           Insurance
         </button>
         <button
           className={`btn btn-${
-            clicked === "Data Analytics" ? "success" : "outline-dark"
+            myOrg === "Data Analytics" ? "success" : "outline-dark"
           } rounded-pill mx-1 my-1`}
           style={{ width: "175px" }}
           onClick={() => {
-            setClicked("Data Analytics");
+            setMyOrg("Data Analytics");
           }}
         >
           Data Analytics

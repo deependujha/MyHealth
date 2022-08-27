@@ -5,6 +5,8 @@ import React, { useState, useEffect } from "react";
 
 function MyApp({ Component, pageProps }) {
   const [usrAddr, setUsrAddr] = useState("");
+  const [myContract, setMyContract] = useState("");
+  const [myOrg, setMyOrg] = useState("Hospital");
 
   useEffect(() => {
     import("bootstrap/dist/js/bootstrap");
@@ -23,7 +25,15 @@ function MyApp({ Component, pageProps }) {
           rel="stylesheet"
         ></link>
       </Head>
-      <Component {...pageProps} usrAddr={usrAddr} setUsrAddr={setUsrAddr} />
+      <Component
+        {...pageProps}
+        usrAddr={usrAddr}
+        setUsrAddr={setUsrAddr}
+        myContract={myContract}
+        setMyContract={setMyContract}
+        myOrg={myOrg}
+        setMyOrg={setMyOrg}
+      />
     </>
   );
 }
