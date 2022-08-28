@@ -81,7 +81,7 @@ const SquareBox = ({
                 router.push("/query");
               }}
             >
-              Make a complex query on health data
+              Make a query on health database
             </Button>
           </div>
         </div>

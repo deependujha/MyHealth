@@ -65,7 +65,7 @@ const SquareBox = ({
               Check health report
             </Button>
             <div className="my-3">
-              <div class="separator">
+              <div className="separator">
                 <span className="mx-3">or</span>
               </div>
             </div>
@@ -81,7 +81,7 @@ const SquareBox = ({
                 router.push("/query");
               }}
             >
-              Make a complex query on health data
+              Make a query on health database
             </Button>
           </div>
         </div>
