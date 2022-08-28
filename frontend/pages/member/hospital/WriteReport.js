@@ -1,26 +1,35 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import { useRouter } from "next/router";
+import axios from "axios";
 
 const WriteReport = ({ usrAddr, setNewUsrAddr, newUsrAddr, myContract }) => {
   const router = useRouter();
   const [what, setWhat] = useState("");
   const [med, setMed] = useState("");
-  const [tag, setTag] = useState("");
+  const [myTag, setTag] = useState("");
   const [remarks, setRemarks] = useState("");
 
   const writeTheData = async () => {
     myContract
-      .enterData(newUsrAddr, what, med, tag, remarks)
+      .enterData(newUsrAddr, what, med, myTag, remarks)
       .then((val) => {
-        alert("Data entered successfully");
-        setWhat("");
-        setMed("");
-        setTag("");
-        setRemarks("");
-        setNewUsrAddr("");
+        axios
+          .post(`http://localhost:5000/tag`, {
+            addr: newUsrAddr,
+            tag: myTag,
+          })
+          .then((response) => {
+            alert("Data entered successfully");
+            setWhat("");
+            setMed("");
+            setTag("");
+            setRemarks("");
+            setNewUsrAddr("");
 
-        router.replace("/member/hospital");
+            router.replace("/member/hospital");
+          })
+          .catch((err) => console.log(err));
       })
       .catch((err) => {
         alert(err);
@@ -85,7 +94,7 @@ const WriteReport = ({ usrAddr, setNewUsrAddr, newUsrAddr, myContract }) => {
               <div className="input-group mt-1 mx-5" style={{ width: "400px" }}>
                 <span className="input-group-text"> ⧫</span>
                 <input
-                  value={tag}
+                  value={myTag}
                   onChange={(e) => {
                     setTag(e.target.value);
                   }}

@@ -36,12 +36,16 @@ app.post("/tag", async (req, res) => {
     console.log(usr);
     if (usr) {
       let newData = usr.tags;
-      newData.push(req.body.tag);
-      const resData = await HealthData.findOneAndUpdate(
-        { address: req.body.addr },
-        { address: req.body.addr, tags: newData }
-      );
-      res.send("data updated");
+      if (newData.includes(req.body.tag)) {
+        res.send("already present");
+      } else {
+        newData.push(req.body.tag);
+        const resData = await HealthData.findOneAndUpdate(
+          { address: req.body.addr },
+          { address: req.body.addr, tags: newData }
+        );
+        res.send("data updated");
+      }
     } else {
       let myTag = [];
       myTag.push(req.body.tag);
