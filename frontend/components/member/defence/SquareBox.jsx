@@ -77,7 +77,8 @@ const SquareBox = ({
                 console.log(
                   `Clicked on write health report. Usr: ${newUsrAddr}`
                 );
-                alert("complex query function will be made soon");
+                // alert("complex query function will be made soon");
+                router.push("/query");
               }}
             >
               Make a complex query on health data
